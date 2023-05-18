@@ -3,13 +3,27 @@
     <div class="container-xxl d-flex h-100">
         <ul class="menu-inner py-1">
                 <!-- Page -->
-            <li class="menu-item active">
-                <a href="/" class="menu-link">
+            <li class="menu-item menu-inicio">
+                <a href="/pagina" class="menu-link">
                     <i class="menu-icon tf-icons mdi mdi-home-outline"></i>
                     <div data-i18n="Page 1">Page 1</div>
                 </a>
             </li>
-            <li class="menu-item">
+            <li class="menu-item menu-subMenu">
+                <a href="" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons mdi mdi-home-outline"></i>
+                    <div data-i18n="Dashboards">Cadastros</div>
+                </a>
+                <ul class="menu-sub">
+                    <li class="menu-item menu-cadastro">
+                        <a href="/CadastroUsuario" class="menu-link">
+                            <i class="menu-icon tf-icons mdi mdi-cart-outline"></i>
+                            <div data-i18n="eCommerce">Usuario</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-item menu-pagina-2">
                 <a href="/pagina-2" class="menu-link">
                     <i class="menu-icon tf-icons mdi mdi-file-outline"></i>
                     <div data-i18n="Page 2">Page 2</div>

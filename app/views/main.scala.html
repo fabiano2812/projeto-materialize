@@ -1,10 +1,10 @@
 @*
- * This template is called from the `index` template. This template
- * handles the rendering of the page2 header and body tags. It takes
- * two arguments, a `String` for the title of the page2 and an `Html`
- * object to insert into the body of the page2.
- *@
-@(title: String)(content: Html)
+* This template is called from the `index` template. This template
+* handles the rendering of the page2 header and body tags. It takes
+* two arguments, a `String` for the title of the page2 and an `Html`
+* object to insert into the body of the page2.
+*@
+@(title: String, menuChave: String, js: Html, css: Html)(content: Html)
 
 <!DOCTYPE html>
 
@@ -13,7 +13,7 @@ lang="pt-br"
 class="light-style layout-menu-fixed"
 dir="ltr"
 data-theme="theme-default"
-data-assets-path="../../assets/"
+data-assets-path="../../assets"
 data-template="horizontal-menu-template-no-customizer-starter">
     <head>
         <meta charset="utf-8" />
@@ -40,14 +40,25 @@ data-template="horizontal-menu-template-no-customizer-starter">
 
             <!-- Menu waves for no-customizer fix -->
         <link rel="stylesheet" href="@routes.Assets.versioned("assets/vendor/libs/node-waves/node-waves.css")"/>
-
-            <!-- Core CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" integrity="sha512-+EoPw+Fiwh6eSeRK7zwIKG2MA8i3rV/DGa3tdttQGgWyatG/SkncT53KHQaS5Jh9MNOT3dmFL0FjTY08And/Cw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+        <!-- Core CSS -->
         <link rel="stylesheet" href="@routes.Assets.versioned("assets/vendor/css/rtl/core.css")"/>
         <link rel="stylesheet" href="@routes.Assets.versioned("assets/vendor/css/rtl/theme-default.css")"/>
         <link rel="stylesheet" href="@routes.Assets.versioned("assets/css/demo.css")"/>
 
             <!-- Vendors CSS -->
         <link rel="stylesheet" href="@routes.Assets.versioned("assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css")"/>
+
+        <link rel="stylesheet" href="@routes.Assets.versioned("assets/vendor/libs/select2/select2.css")"/>
+
+
+        <link rel="stylesheet" href="@routes.Assets.versioned("assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css")"/>
+        <link rel="stylesheet" href="@routes.Assets.versioned("assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css")"/>
+        <link rel="stylesheet" href="@routes.Assets.versioned("assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css")"/>
+
+        <link rel="stylesheet" href="@routes.Assets.versioned("assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css")"/>
+        <link rel="stylesheet" href="@routes.Assets.versioned("assets/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css")"/>
 
             <!-- Page CSS -->
 
@@ -151,7 +162,7 @@ data-template="horizontal-menu-template-no-customizer-starter">
                                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                                     <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                                         <div class="avatar avatar-online">
-                                            <img src="../../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                                            <img src="@routes.Assets.versioned("assets/img/avatars/1.png")" alt class="w-px-40 h-auto rounded-circle" />
                                         </div>
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-end">
@@ -160,11 +171,11 @@ data-template="horizontal-menu-template-no-customizer-starter">
                                                 <div class="d-flex">
                                                     <div class="flex-shrink-0 me-3">
                                                         <div class="avatar avatar-online">
-                                                            <img src="../../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                                                            <img src="@routes.Assets.versioned("assets/img/avatars/1.png")" alt class="w-px-40 h-auto rounded-circle" />
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1">
-                                                        <span class="fw-semibold d-block">John Doe</span>
+                                                        <span class="fw-semibold d-block">usuario.getNome</span>
                                                         <small class="text-muted">Admin</small>
                                                     </div>
                                                 </div>
@@ -198,7 +209,7 @@ data-template="horizontal-menu-template-no-customizer-starter">
                                             <div class="dropdown-divider"></div>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="auth-login-basic.html">
+                                            <a class="dropdown-item" href="/">
                                                 <i class="mdi mdi-power me-2"></i>
                                                 <span class="align-middle">Log Out</span>
                                             </a>
@@ -218,17 +229,17 @@ data-template="horizontal-menu-template-no-customizer-starter">
                         <!-- Content wrapper -->
                     <div class="content-wrapper">
                             <!-- Menu -->
-                            @views.html.menu()
+                        @views.html.menu()
 
                             <!-- / Menu -->
 
                             <!-- Content -->
-                            @content
+                        @content
 
                             <!--/ Content -->
 
                             <!-- Footer -->
-                            @views.html.footer()
+                        @views.html.footer()
                             <!-- / Footer -->
 
                         <div class="content-backdrop fade"></div>
@@ -254,6 +265,20 @@ data-template="horizontal-menu-template-no-customizer-starter">
         <script src="@routes.Assets.versioned("assets/vendor/libs/jquery/jquery.js")"></script>
         <script src="@routes.Assets.versioned("assets/vendor/libs/popper/popper.js")"></script>
         <script src="@routes.Assets.versioned("assets/vendor/js/bootstrap.js")"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js" integrity="sha512-IsNh5E3eYy3tr/JiX2Yx4vsCujtkhwl7SLqgnwLNgf04Hrt9BT9SXlLlZlWx+OK4ndzAoALhsMNcCmkggjZB1w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <script src="@routes.Assets.versioned("/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js")"></script>
+        <script src="@routes.Assets.versioned("/assets/vendor/libs/select2/select2.js")"></script>
+        <script src="@routes.Assets.versioned("/assets/vendor/libs/cleavejs/cleave.js")"></script>
+        <script src="@routes.Assets.versioned("/assets/vendor/libs/cleavejs/cleave-phone.js")"></script>
+        <script src="@routes.Assets.versioned("/assets/vendor/libs/formvalidation/dist/js/FormValidation.min.js")"></script>
+        <script src="@routes.Assets.versioned("/assets/vendor/libs/formvalidation/dist/js/plugins/Bootstrap5.min.js")"></script>
+        <script src="@routes.Assets.versioned("/assets/vendor/libs/formvalidation/dist/js/plugins/AutoFocus.min.js")"></script>
+        <script src="@routes.Assets.versioned("/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js")"></script>
+
         <script src="@routes.Assets.versioned("assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js")"></script>
         <script src="@routes.Assets.versioned("assets/vendor/libs/node-waves/node-waves.js")"></script>
 
@@ -268,5 +293,20 @@ data-template="horizontal-menu-template-no-customizer-starter">
         <script src="@routes.Assets.versioned("assets/js/main.js")"></script>
 
             <!-- Page JS -->
+
+
+        <script src="@routes.Assets.versioned("javascripts/menu.js")"></script>
+
+        <script type="text/javascript">
+            "use strict";
+
+            jQuery(document).ready(function () {
+                var chaveMenu = '@menuChave';
+                Menu.init(chaveMenu);
+            });
+        </script>
+
+        @js
+
     </body>
 </html>

@@ -3,13 +3,25 @@
 # ~~~~
 
 # An example controller showing a sample home page2
-GET     /                           controllers.HomeController.index
-# GET     /pagina-2                   controllers.Page.page2()
 
-# An example controller showing how to use dependency injection
-GET     /count                      controllers.CountController.count
-# An example controller showing how to write asynchronous code
-GET     /message                    controllers.AsyncController.message
+#LOGIN
+GET /                               controllers.Login.paginaInicial
+POST  /login/salvarcadastro         controllers.Login.salvarNovoCadastro()
+POST  /login/inicio                 controllers.Login.logarContaInicio()
+
+#CADASTRO_USUARIO
+GET /cadastrar/usuario               controllers.Login.novoCadastro()
+
+
+#PAGINA_GUIA
+GET     /pagina                    controllers.Application.paginaInicial()
+GET     /pagina-2                   controllers.Application.segundaPagina()
+
+POST  /usuarios/filtrar             controllers.Usuarios.filtrar
+POST /excluir/usuario                controllers.Usuarios.excluir()
+#SUB_MENU
+GET /CadastroUsuario               controllers.Application.paginaCadastrosUsuarios()
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
