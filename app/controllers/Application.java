@@ -28,7 +28,10 @@ public class Application extends Controller {
     @Transactional
     public Result segundaPagina() throws Throwable{
         try {
-            return ok(views.html.page2.render());
+            String strId = Http.Context.current().session().get(USUARIO_LOGADO);
+            Long id = Long.valueOf(strId);
+            Usuario usuarioId = Usuario.buscarPorId(id);
+            return ok(views.html.page2.render(usuarioId));
         }catch (Exception e){
             return badRequest();
         }
@@ -36,7 +39,10 @@ public class Application extends Controller {
     @Transactional
     public Result paginaCadastrosUsuarios() throws Throwable{
         try {
-            return ok(views.html.Cadastro.usuario.render());
+            String strId = Http.Context.current().session().get(USUARIO_LOGADO);
+            Long id = Long.valueOf(strId);
+            Usuario usuarioId = Usuario.buscarPorId(id);
+            return ok(views.html.Cadastro.usuario.render(usuarioId));
         }catch (Exception e){
             return badRequest();
         }
@@ -44,7 +50,10 @@ public class Application extends Controller {
     @Transactional
     public Result paginaInicial() throws Throwable{
         try {
-            return ok(views.html.index.render());
+            String strId = Http.Context.current().session().get(USUARIO_LOGADO);
+            Long id = Long.valueOf(strId);
+            Usuario usuarioId = Usuario.buscarPorId(id);
+            return ok(views.html.index.render(usuarioId));
         }catch (Exception e){
             return badRequest();
         }

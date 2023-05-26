@@ -1,4 +1,4 @@
-@()
+@(usuario: Usuario)
 @js = {
     <script src="@routes.Assets.versioned("/assets/js/app-user-list.js")"></script>
 
@@ -7,10 +7,10 @@
 
 }
 
-@views.html.main("Cadastro de Usuários", "menu-usuarios", js, css){
+@views.html.main("Cadastro de Usuários", "menu-usuarios", js, css, usuario){
     <div class="container-xxl flex-grow-1 container-p-y">
             <!-- Users List Table -->
-        <div class="card">
+        <div class="card" id="gerarCard">
             <div class="card-header">
                 <h5 class="card-title">Filtros</h5>
             </div>

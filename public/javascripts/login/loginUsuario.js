@@ -5,7 +5,44 @@ var LoginUsuario = function () {
     var init = function () {
         validarLogin();
         validarCadastro();
+        buscarUsuarios();
     }
+
+    var buscarUsuarios = function () {
+        $.ajax({
+            method: 'POST',
+            url: '/buscar/usuarios',
+            data: {},
+            success(usuarios) {
+                var html = '<ul class="list-unstyled mb-0">'
+                for (const usuario of usuarios) {
+                    html += '          <li class="mb-3">'
+                    html += '  <div class="d-flex align-items-start">'
+                    html += '  <div class="d-flex align-items-start">'
+                    html += '  <div class="avatar me-3">'
+                    html += '  <img src="/assets/img/avatars/2.png" alt="Avatar"  class="rounded-circle"/>'
+                    html += '  </div>'
+                    html += ' <div class="me-2">'
+                    html += '   <h6 class="mb-0">'+usuario.email+'</h6>'
+                    html += '    </div>'
+                    html += '   </div>'
+                    html += '   <div class="ms-auto">'
+                    html += '    <button class="btn btn-outline-primary btn-icon">'
+                    html += '   <i class="mdi mdi-account-outline mdi-24px"></i>'
+                    html += '   </button>'
+                    html += '   </div>'
+                    html += '  </div>'
+                    html += '  </li>'
+                }
+                html += '</ul>'
+                $("#gerarUsuarios").html(html);
+            },
+            error() {
+                console.log("Deu algo de errado no servidor")
+            }
+        })
+    }
+
 
     var validarCadastro = function () {
         $('#formNovoCadastro').validate({
@@ -49,10 +86,11 @@ var LoginUsuario = function () {
             success: function () {
                 Swal.fire({
                     title: 'Tudo certo!',
-                    text: 'Do you want to continue',
+                    text: 'usuario salvo com Sucesso',
                     icon: 'success',
                     confirmButtonText: 'Cool'
                 })
+
             },
             error: function (jqXHR, exception) {
                 console.log("Ocorreu um erro no servidor")

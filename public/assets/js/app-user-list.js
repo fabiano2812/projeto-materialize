@@ -54,10 +54,10 @@ $(function () {
                     render: function (data, type, full, meta) {
                         var acoesHtml = '';
                         acoesHtml += '<select id="edicao" class="btn btn-success" onchange="getSelectedValue('+full.id+')">' +
-                            '    <option>Editar</option>' +
+                           /* '    <option>Editar</option>' +
                             '    <option value="view">View</option>' +
                             '    <option value="Alterar">Alterar</option>' +
-                            '    <option value="Deletar">Deletar</option>' +
+                            '    <option value="Deletar">Deletar</option>' +*/
                             '  </select>';
                         return acoesHtml;
                     }
@@ -88,6 +88,18 @@ function getSelectedValue(id) {
 
 
 var alterarDadosUsuario = function (id){
+    console.log(id)
+    $.ajax({
+        method: 'POST',
+        url: '/alterar/usuario',
+        data: id,
+        success(){
+            window.open('http://localhost:9000/alterar/usuario')
+        },
+        error(){
+            console.log("Deu algo de errado no servidor")
+        }
+    })
     console.log("to alterando")
     console.log(id)
 }

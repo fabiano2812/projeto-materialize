@@ -4,7 +4,7 @@
 * two arguments, a `String` for the title of the page2 and an `Html`
 * object to insert into the body of the page2.
 *@
-@(title: String, menuChave: String, js: Html, css: Html)(content: Html)
+@(title: String, menuChave: String, js: Html, css: Html, usuario: Usuario)(content: Html)
 
 <!DOCTYPE html>
 
@@ -175,7 +175,7 @@ data-template="horizontal-menu-template-no-customizer-starter">
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1">
-                                                        <span class="fw-semibold d-block">usuario.getNome</span>
+                                                        <span class="fw-semibold d-block">@usuario.getNome</span>
                                                         <small class="text-muted">Admin</small>
                                                     </div>
                                                 </div>
@@ -185,9 +185,9 @@ data-template="horizontal-menu-template-no-customizer-starter">
                                             <div class="dropdown-divider"></div>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="#">
+                                            <a class="dropdown-item" href="/alterar/usuario/@usuario.getId">
                                                 <i class="mdi mdi-account-outline me-2"></i>
-                                                <span class="align-middle">My Profile</span>
+                                                <span class="align-middle">Meu perfil</span>
                                             </a>
                                         </li>
                                         <li>

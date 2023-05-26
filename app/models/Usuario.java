@@ -17,6 +17,15 @@ public class Usuario extends BaseEntidade {
 
     private String senha;
 
+    public Integer telefone;
+
+    public String cargo;
+
+    @Embedded
+    public Endereco endereco;
+
+    public String idioma;
+
     public String email;
 
 
@@ -28,6 +37,8 @@ public class Usuario extends BaseEntidade {
             return null;
         }
     }
+
+
 
     public static Usuario buscarUsuarioPorEmailSenha(String email, String senha) {
         try {
@@ -42,11 +53,43 @@ public class Usuario extends BaseEntidade {
     }
 
     public static Usuario buscarPorId(Long id) {
+
         Query query = JPA.em().createQuery("SELECT u FROM Usuario u WHERE u.id = :id ");
         query.setParameter("id", id);
         return (Usuario) query.getSingleResult();
     }
 
+    public Integer getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(Integer telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getIdioma() {
+        return idioma;
+    }
+
+    public void setIdioma(String idioma) {
+        this.idioma = idioma;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
 
     public Long getId() {
         return id;

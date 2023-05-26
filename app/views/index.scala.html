@@ -2,7 +2,7 @@
 * This template takes a single argument, a String containing a
 * message to display.
 *@
-@()
+@(usuario: Usuario)
 
 @js={
 
@@ -11,7 +11,7 @@
     @css={
 
     }
-@main("Page 1 - Starter Kit | Materialize - Material Design HTML Admin Template","menu-inicio",js,css) {
+@main("Page 1 - Starter Kit | Materialize - Material Design HTML Admin Template","menu-inicio",js,css, usuario) {
     <div class="container-xxl flex-grow-1 container-p-y">
         <h4 class="fw-bold py-3 mb-4">Page 1 teste</h4>
         <p>

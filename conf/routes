@@ -19,6 +19,11 @@ GET     /pagina-2                   controllers.Application.segundaPagina()
 
 POST  /usuarios/filtrar             controllers.Usuarios.filtrar
 POST /excluir/usuario                controllers.Usuarios.excluir()
+
+GET  /alterar/usuario/:id                controllers.Usuarios.alterarDadosUsuario(id: Long)
+POST /buscar/usuarios                    controllers.Usuarios.buscarTodosUsuarios()
+
+
 #SUB_MENU
 GET /CadastroUsuario               controllers.Application.paginaCadastrosUsuarios()
 
