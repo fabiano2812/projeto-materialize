@@ -1,0 +1,27 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# An example controller showing a sample home page2
+
+#LOGIN
+GET /                               controllers.Login.paginaInicial
+POST  /login/salvarcadastro         controllers.Login.salvarNovoCadastro()
+POST  /login/inicio                 controllers.Login.logarContaInicio()
+
+#CADASTRO_USUARIO
+GET /cadastrar/usuario               controllers.Login.novoCadastro()
+
+
+#PAGINA_GUIA
+GET     /pagina                    controllers.Application.paginaInicial()
+GET     /pagina-2                   controllers.Application.segundaPagina()
+
+POST  /usuarios/filtrar             controllers.Usuarios.filtrar
+POST /excluir/usuario                controllers.Usuarios.excluir()
+#SUB_MENU
+GET /CadastroUsuario               controllers.Application.paginaCadastrosUsuarios()
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
